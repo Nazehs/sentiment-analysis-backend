@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\SentimentController;
 use App\Http\Controllers\UserController;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 // UserController
@@ -34,7 +33,6 @@ Route::post('users/create', [UserController::class, 'store']);
 Route::put('users/{id}', [UserController::class, 'update']);
 // delete use based on id
 Route::delete('users/{id}', [UserController::class, 'delete']);
-
 // user login route
 Route::post('login', [UserController::class, 'login']);
 
@@ -50,8 +48,3 @@ Route::post('sentiment/create', [SentimentController::class, 'store']);
 Route::put('sentiment/{id}', [SentimentController::class, 'update']);
 // delete sentiment based on id
 Route::delete('sentiment/{id}', [SentimentController::class, 'delete']);
-
-
-
-
-Route::post('register', [RegisterController::class, 'register']);

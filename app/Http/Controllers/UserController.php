@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Hash;
-use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 // php artisan make:migration --table=users adds_api_token_to_users_table
 
 class UserController extends Controller
 {
-    //
+    // get all the users
     public function index()
     {
         return User::all();
     }
 
+    // get user by ID
     public function getUser(User $id)
     {
 
         return User::find($id);
     }
 
+    // create user int he database
     public function store(Request $request)
     {
         $user = User::create($request->all());
@@ -30,6 +32,7 @@ class UserController extends Controller
         return response()->json($user, 201);
     }
 
+    // update user by user ID
     public function update(Request $request, $id)
     {
 
@@ -39,6 +42,7 @@ class UserController extends Controller
         return response()->json($user, 200);
     }
 
+    // delete user by userID
     public function delete(User $user)
     {
         $user->delete();
@@ -46,28 +50,7 @@ class UserController extends Controller
         return response()->json(null, 204);
     }
 
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
-                ->withSuccess('Signed in');
-        }
-
-        return redirect("login")->withSuccess('Login details are not valid');
-    }
-
-    public function indexPage()
-    {
-        return view('auth.login');
-    }
-
-
+    // method to handle login fetch data
     public function customLogin(Request $request)
     {
         $request->validate([
@@ -84,57 +67,31 @@ class UserController extends Controller
         return redirect("signin")->withSuccess('Login details are not valid');
     }
 
-
-
-    public function registration()
+    // sign in view
+    public function signInPage()
     {
-        return view('auth.registration');
-    }
 
-    public function homePage()
-    {
-        return view('home');
-    }
-    public function signInPage(Request $request)
-    {
-        // $request->validate([
-        //     'email' => 'required',
-        //     'password' => 'required',
-        // ]);
-
-        // $credentials = $request->only('email', 'password');
-        // if (Auth::attempt($credentials)) {
-        //     return redirect()->intended('dashboard')
-        //         ->withSuccess('Signed in');
-        // }
-
-        // return redirect("login")->withSuccess('Login details are not valid');
         return view('pages.signIn');
     }
+
+    // change password view
     public function changePasswordPage()
     {
         return view('pages.changepassword');
     }
-
+    // reset password view
     public function resetPasswordPage()
     {
         return view('pages.resetPassword');
     }
 
+    // page view   
     public function profilePage()
     {
         return view('pages.profile');
     }
 
-    public function resultsPage()
-    {
-        return view('pages.results');
-    }
-    public function sentimentOverviewPage()
-    {
-        return view('pages.signUp');
-    }
-
+    // sign up view 
     public function signUpPage()
     {
 
@@ -142,17 +99,15 @@ class UserController extends Controller
     }
 
 
+    // update user profile view
     public function updateProfile()
     {
 
         return view('pages.updateProfile');
     }
 
-    public function generateAnalysisPage()
-    {
-        return view('pages.generateAnalysis');
-    }
 
+    // user registration method for user creation
     public function customRegistration(Request $request)
     {
         $request->validate([
@@ -178,6 +133,7 @@ class UserController extends Controller
     }
 
 
+    // user dashboard 
     public function dashboard()
     {
         if (Auth::check()) {
@@ -189,12 +145,11 @@ class UserController extends Controller
         return redirect("signin")->withSuccess('You are not allowed to access');
     }
 
-
+    // sign out route
     public function signOut()
     {
         Session::flush();
         Auth::logout();
-
         return Redirect('/signin');
     }
 }

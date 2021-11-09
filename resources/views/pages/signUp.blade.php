@@ -28,20 +28,6 @@
                 </p>
                 <div class="row">
                     <div class="col-12">
-                        <!-- <form class="row">
-                            <div class="col-12 align-self-center">
-                                <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username"
-                                        placeholder="saaria@example.com">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password"
-                                        placeholder="...............">
-                                </div>
-                            </div>
-                        </form> -->
                         <form action="{{ route('register.custom') }}" method="POST">
                             @csrf
                             <div class="form-group mb-3">
@@ -73,10 +59,6 @@
                                     <label><input type="checkbox" name="remember"> Remember Me</label>
                                 </div>
                             </div>
-
-                            <!-- <div class="d-grid mx-auto">
-                                <button type="submit" class="btn btn-dark btn-block">Sign up</button>
-                            </div> -->
                             <div class="button-container">
 
                                 <button type='submit' class="full-width-button btn-default">

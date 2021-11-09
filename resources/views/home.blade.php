@@ -1,25 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 <div class="main-content">
     <!-- hero section -->
     <div class="container-fluid no-padding no-margin">
@@ -62,9 +43,7 @@
                 <div class="col">
                     <div class="card card-container">
                         <div class="card-image card-1">
-
                         </div>
-
                         <div class="card-body">
                             <h5 class="card-title">Hassle free</h5>
                             <p class="card-text">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -137,13 +116,9 @@
             </p>
         </div>
     </section>
-
     <!-- scattered bg -->
-
     <section class="container scatter-icons-bg">
-
     </section>
-
     <!-- hotline numbers section -->
     <section class="container-fluid no-padding research-papers-hotlines-container">
         <div class="col-md-12">

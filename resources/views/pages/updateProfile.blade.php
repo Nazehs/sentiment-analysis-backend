@@ -14,6 +14,7 @@ $full_name = explode(" ", Auth::user()->name)
                     </div>
                 </div>
                 <div class="col-12">
+                    <!-- update form section -->
                     <form class="row">
                         <div class="col-12 align-self-center">
                             <div class="mb-3">
@@ -30,13 +31,13 @@ $full_name = explode(" ", Auth::user()->name)
                                 <input type="email" class="form-control" value={{Auth::user()->email}}>
                             </div>
                         </div>
-                    </form>
-                    <div class="button-container">
+                        <div class="button-container">
 
-                        <button class="full-width-button btn-default">
-                            Update Profile
-                        </button>
-                    </div>
+                            <button class="full-width-button btn-default">
+                                Update Profile
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
